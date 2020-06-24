@@ -4,9 +4,9 @@ class App extends Component {
 
 	render() {
 		return (
-			<div>
-				Starter Code
-			</div>
+			<main className="container">
+				<h1>Would You Rather?</h1>
+			</main>
 		)
 	}
 }
