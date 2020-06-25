@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { handleInitialData } from '../actions/shared';
 import { connect } from 'react-redux';
+import { handleInitialData } from '../actions/shared';
+import Home from './Home';
+
 
 class App extends Component {
-
 	componentDidMount() {
 		this.props.dispatch(handleInitialData())
 	}
@@ -11,10 +12,19 @@ class App extends Component {
 	render() {
 		return (
 			<div className="container">
-				<h1>Would You Rather?</h1>
+				{this.props.loading === true
+					? null
+					: <Home />
+				}
 			</div>
 		)
 	}
 }
 
-export default connect()(App)
+
+const mapStateToProps = ({ authedUser }) => ({
+	loading: authedUser === null
+})
+
+
+export default connect(mapStateToProps)(App)
