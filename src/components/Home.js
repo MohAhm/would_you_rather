@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
+import PollCard from './PollCard';
 
 
 class Home extends Component {
@@ -12,7 +13,7 @@ class Home extends Component {
                 <ul className="home-list">
                     {this.props.pollsIds.map((id) => (
                         <li key={id}>
-                            <div>POLL ID: {id}</div>
+                            <PollCard id={id} />
                         </li>
                     ))}
                 </ul>

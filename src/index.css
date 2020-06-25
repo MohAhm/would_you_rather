@@ -1,13 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans');
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	font-family: 'Work Sans', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	color: #252525;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+li {
+	padding: 10px;
+}
+
+h5 {
+	font-weight: bold;
+}
+
+.btn-outline-primary {
+    color: #2ecc71;
+    border-color: #2ecc71;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:not(:disabled):not(.disabled):active {
+    color: #27ae60;
+    background-color: transparent;
+    border-color: #27ae60;
+}
+
+.btn:focus,
+.btn-outline-primary:focus,
+.btn-outline-primary:not(:disabled):not(.disabled):active:focus {
+	box-shadow: none;
+}
+
+.flex {
+	display: flex;
+}
+
+.avatar {
+	height: 115px;
+	margin-right: 20px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-radius: 50%;
+	flex-shrink: 0;
+}
+
+.card-details {
+	padding-left: 20px;
+	border-left: 1px solid #eee;
+
+	flex: 1;
+	overflow: hidden;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
