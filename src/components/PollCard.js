@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux';
-import { formatPollCard } from '../utils/helpers';
+import { connect } from 'react-redux'
+import { formatPollCard } from '../utils/helpers'
 
 
 class PollCard extends Component {
@@ -47,7 +47,7 @@ class PollCard extends Component {
                 </div>
 
             </div>
-        );
+        )
     }
 }
 
@@ -64,4 +64,4 @@ function mapStateToProps ({ authedUser, users, polls }, { id }) {
 }
 
 
-export default connect(mapStateToProps)(PollCard);
+export default connect(mapStateToProps)(PollCard)

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux';
-import PollCard from './PollCard';
+import { connect } from 'react-redux'
+import PollCard from './PollCard'
 
 
 class Home extends Component {
@@ -18,7 +18,7 @@ class Home extends Component {
                     ))}
                 </ul>
             </div>
-        );
+        )
     }
 }
 
