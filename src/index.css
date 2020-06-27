@@ -33,9 +33,24 @@ h5 {
 
 /* Buttons */
 
+.btn-primary,
 .btn-outline-primary {
-    color: #2ecc71;
-    border-color: #2ecc71;
+	border-color: #2ecc71;
+}
+
+.btn-primary {
+	background-color: #2ecc71;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:not(:disabled):not(.disabled):active {
+	background-color: #27ae60;
+	border-color: #27ae60;
+}
+
+.btn-outline-primary {
+	color: #2ecc71;
 }
 
 .btn-outline-primary:hover,
@@ -46,9 +61,16 @@ h5 {
 }
 
 .btn:focus,
+.form-control:focus,
 .btn-outline-primary:focus,
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.btn-primary:not(:disabled):not(.disabled).active:focus,
 .btn-outline-primary:not(:disabled):not(.disabled):active:focus {
 	box-shadow: none;
+}
+
+.form-control:focus {
+	border-color: #ced4da;
 }
 
 

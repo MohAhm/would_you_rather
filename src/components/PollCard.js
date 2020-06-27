@@ -4,11 +4,6 @@ import { formatPollCard } from '../utils/helpers'
 
 
 class PollCard extends Component {
-    viewPoll = (e, id) => {
-        e.preventDefault()
-        // todo: View selected poll.
-    }
-
     render() {
         const { poll } = this.props
 
@@ -18,7 +13,7 @@ class PollCard extends Component {
 
         console.log(this.props)
 
-        const { id, name, avatar, subText} = poll
+        const { name, avatar, subText} = poll
 
         return (
             <div className='card'>
@@ -34,12 +29,12 @@ class PollCard extends Component {
                     <div className="card-details">
                         <h5 className="card-title">Would you rather</h5>
                         <p className='card-text'>{`...${subText}...`}</p>
-                        <button
+                        <a
                             className='btn btn-outline-primary'
-                            onClick={e => this.viewPoll(e, id)}
+                            href="#poll"
                         >
                             View Poll
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
