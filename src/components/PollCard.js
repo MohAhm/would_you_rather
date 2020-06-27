@@ -18,9 +18,7 @@ class PollCard extends Component {
 
         console.log(this.props)
 
-        const {
-            id, name, avatar, subText, hasAnswered
-        } = poll
+        const { id, name, avatar, subText} = poll
 
         return (
             <div className='card'>
@@ -36,7 +34,6 @@ class PollCard extends Component {
                     <div className="card-details">
                         <h5 className="card-title">Would you rather</h5>
                         <p className='card-text'>{`...${subText}...`}</p>
-
                         <button
                             className='btn btn-outline-primary'
                             onClick={e => this.viewPoll(e, id)}
@@ -45,7 +42,6 @@ class PollCard extends Component {
                         </button>
                     </div>
                 </div>
-
             </div>
         )
     }
@@ -56,7 +52,6 @@ function mapStateToProps ({ authedUser, users, polls }, { id }) {
     const poll = polls[id]
 
     return {
-        authedUser,
         poll: poll
             ? formatPollCard(poll, users[poll.author], authedUser)
             : null

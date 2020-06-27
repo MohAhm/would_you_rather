@@ -15,3 +15,11 @@ export function getInitialData () {
         polls,
     }))
 }
+
+export function saveQuestionAnswer(question) {
+    return _saveQuestionAnswer(question)
+}
+
+export function saveQuestion(question) {
+    return _saveQuestion(question)
+}
