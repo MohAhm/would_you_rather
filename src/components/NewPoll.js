@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { handleAddPoll } from '../actions/polls'
 
 
 class NewPoll extends Component {
     state = {
-        optionOne: '',
-        optionTwo: '',
+        optionOneText: '',
+        optionTwoText: '',
     }
 
     handleChane = e => {
@@ -14,20 +16,19 @@ class NewPoll extends Component {
     handleSubmit = e => {
         e.preventDefault()
 
-        const { optionOne, optionTwo } = this.state
+        const { optionOneText, optionTwoText } = this.state
+        const { dispatch } = this.props
 
-        // todo: Add Poll to the store
-
-        console.log('New Poll: ', optionOne, optionTwo)
+        dispatch(handleAddPoll(optionOneText, optionTwoText))
 
         this.setState({
-            optionOne: '',
-            optionTwo: ''
+            optionOneText: '',
+            optionTwoText: ''
         })
     }
 
     render() {
-        const { optionOne, optionTwo } = this.state
+        const { optionOneText, optionTwoText } = this.state
 
         return (
             <div className="card">
@@ -40,8 +41,8 @@ class NewPoll extends Component {
                     <form onSubmit={this.handleSubmit}>
                         <input
                             type='text'
-                            name='optionOne'
-                            value={optionOne}
+                            name='optionOneText'
+                            value={optionOneText}
                             onChange={this.handleChane}
                             className='form-control'
                             placeholder='Enter Option One Text Here'
@@ -51,8 +52,8 @@ class NewPoll extends Component {
 
                         <input
                             type='text'
-                            name='optionTwo'
-                            value={optionTwo}
+                            name='optionTwoText'
+                            value={optionTwoText}
                             onChange={this.handleChane}
                             className='form-control'
                             placeholder='Enter Option Two Text Here'
@@ -66,4 +67,4 @@ class NewPoll extends Component {
     }
 }
 
-export default NewPoll
+export default connect()(NewPoll)
