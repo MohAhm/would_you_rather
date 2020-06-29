@@ -1,15 +1,14 @@
 
-export function formatPollCard(poll, author, authedUser) {
+
+export function formatPoll(poll, author) {
     const { id, optionOne, optionTwo } = poll
-    const { name, avatarURL } = author
-    const { text, votes: votesOptionOne } = optionOne
-    const { votes: votesOptionTwo } = optionTwo
+    const { name, avatarURL: avatar } = author
 
     return {
         id,
         name,
-        avatar: avatarURL,
-        subText: text.substring(0, text.length / 2),
-        hasAnswered: votesOptionOne.includes(authedUser) || votesOptionTwo.includes(authedUser)
+        avatar,
+        optionOne,
+        optionTwo,
     }
 }

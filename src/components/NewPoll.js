@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleAddPoll } from '../actions/polls'
+import Input from './common/Input'
 
 
 class NewPoll extends Component {
@@ -9,7 +10,7 @@ class NewPoll extends Component {
         optionTwoText: '',
     }
 
-    handleChane = e => {
+    handleChange = e => {
         this.setState({ [e.target.name]: e.target.value })
     }
 
@@ -39,27 +40,29 @@ class NewPoll extends Component {
                     <h5 className="card-title">Would you rather ...</h5>
 
                     <form onSubmit={this.handleSubmit}>
-                        <input
-                            type='text'
+                        <Input
                             name='optionOneText'
                             value={optionOneText}
-                            onChange={this.handleChane}
-                            className='form-control'
+                            onChange={this.handleChange}
                             placeholder='Enter Option One Text Here'
                         />
 
                         <h5 className="text-center mt-3 mb-3">OR</h5>
 
-                        <input
-                            type='text'
+                        <Input
                             name='optionTwoText'
                             value={optionTwoText}
-                            onChange={this.handleChane}
-                            className='form-control'
-                            placeholder='Enter Option Two Text Here'
+                            onChange={this.handleChange}
+                            placeholder='Enter Option One Text Here'
                         />
 
-                        <button type="submit" className="btn btn-primary btn-block mt-3">Submit</button>
+                        <button
+                            type="submit"
+                            className="btn btn-primary btn-block mt-3"
+                            disabled={optionOneText === '' || optionTwoText === ''}
+                        >
+                            Submit
+                        </button>
                     </form>
                 </div>
             </div>

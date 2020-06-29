@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { formatPollCard } from '../utils/helpers'
+import { formatPoll } from '../utils/helpers'
 
 
-class PollCard extends Component {
+class Poll extends Component {
     render() {
         const { poll } = this.props
 
@@ -13,7 +13,8 @@ class PollCard extends Component {
 
         console.log(this.props)
 
-        const { name, avatar, subText} = poll
+        const { name, avatar, optionOne} = poll
+        const { text } = optionOne
 
         return (
             <div className='card'>
@@ -28,7 +29,7 @@ class PollCard extends Component {
 
                     <div className="card-details">
                         <h5 className="card-title">Would you rather</h5>
-                        <p className='card-text'>{`...${subText}...`}</p>
+                        <p className='card-text'>{`...${(text.substring(0, text.length / 2))}...`}</p>
                         <a
                             className='btn btn-outline-primary'
                             href="#poll"
@@ -43,15 +44,15 @@ class PollCard extends Component {
 }
 
 
-function mapStateToProps ({ authedUser, users, polls }, { id }) {
+function mapStateToProps ({ users, polls }, { id }) {
     const poll = polls[id]
 
     return {
         poll: poll
-            ? formatPollCard(poll, users[poll.author], authedUser)
+            ? formatPoll(poll, users[poll.author])
             : null
     }
 }
 
 
-export default connect(mapStateToProps)(PollCard)
+export default connect(mapStateToProps)(Poll)

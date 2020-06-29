@@ -34,11 +34,15 @@ h5 {
 /* Buttons */
 
 .btn-primary,
+.btn-primary.disabled,
+.btn-primary:disabled,
 .btn-outline-primary {
 	border-color: #2ecc71;
 }
 
-.btn-primary {
+.btn-primary,
+.btn-primary.disabled,
+.btn-primary:disabled {
 	background-color: #2ecc71;
 }
 

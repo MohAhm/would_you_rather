@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import PollCard from './PollCard'
+import Poll from './Poll'
 import { Tabs, Tab } from 'react-bootstrap';
 
 
@@ -18,14 +18,14 @@ class Dashboard extends Component {
                 <Tab eventKey='unanswered' title='Unanswered Questions'>
                     {this.props.unansweredPollsIds.map(id => (
                         <li key={id}>
-                            <PollCard id={id} />
+                            <Poll id={id} />
                         </li>
                     ))}
                 </Tab>
                 <Tab eventKey='answered' title='Answered Questions'>
                     {this.props.answeredPollsIds.map(id => (
                         <li key={id}>
-                            <PollCard id={id} />
+                            <Poll id={id} />
                         </li>
                     ))}
                 </Tab>
