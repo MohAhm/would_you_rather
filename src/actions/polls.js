@@ -21,12 +21,12 @@ export function receivePolls(polls) {
     }
 }
 
-function answerPoll({ id, answer, authedUser }) {
+function answerPoll(authedUser, qid, answer) {
     return {
         type: ANSWER_POLL,
-        id,
-        answer,
         authedUser,
+        qid,
+        answer,
     }
 }
 
@@ -48,15 +48,18 @@ export function handleAddPoll(optionOneText, optionTwoText) {
     }
 }
 
-export function handleAnswerPoll(poll) {
-    return (dispatch) => {
-        dispatch(answerPoll(poll))
+export function handleAnswerPoll(qid, answer) {
+    return (dispatch, getState) => {
+        const { authedUser } = getState()
 
-        return saveQuestionAnswer(poll)
-            .catch(e => {
-                console.log('Error in handleAnswerPoll: ', e)
-                dispatch(answerPoll(poll))
-                alert('There was an error answering the poll. Try again')
-            })
+        dispatch(showLoading())
+
+        return saveQuestionAnswer({
+            authedUser,
+            qid,
+            answer
+        })
+            .then(() => dispatch(answerPoll(authedUser, qid, answer)))
+            .then(() => dispatch(hideLoading()))
     }
 }

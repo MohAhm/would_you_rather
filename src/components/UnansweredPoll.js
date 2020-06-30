@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { formatPoll } from '../utils/helpers'
+import { handleAnswerPoll } from '../actions/polls'
 import Radio from './common/Radio'
 
 
@@ -18,14 +19,9 @@ class UnansweredPoll extends Component {
         e.preventDefault()
 
         const { selectedOption } = this.state
-        const { poll } = this.props
+        const { dispatch, id } = this.props
 
-        if (selectedOption === 'optionOne') {
-            console.log('Submitted option is: ', poll.optionOne.text)
-        }
-        else {
-            console.log('Submitted option is: ', poll.optionTwo.text)
-        }
+        dispatch(handleAnswerPoll(id, selectedOption))
     }
 
     render() {
@@ -75,11 +71,11 @@ class UnansweredPoll extends Component {
 }
 
 
-function mapStateToProps ({ authedUser, users, polls }, { id }) {
+function mapStateToProps ({ users, polls }, { id }) {
     const poll = polls[id]
 
     return {
-        authedUser,
+        id,
         poll: poll
             ? formatPoll(poll, users[poll.author])
             : null

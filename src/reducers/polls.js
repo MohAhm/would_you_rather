@@ -9,15 +9,15 @@ export default function polls (state = {}, action) {
             }
 
         case ANSWER_POLL:
-            const { id, answer, authedUser } = action
+            const { authedUser, qid, answer } = action
 
             return {
                 ...state,
-                [id]: {
-                    ...state[id],
+                [qid]: {
+                    ...state[qid],
                     [answer]: {
-                        ...state[id][answer],
-                        votes: state[id][answer].votes.concat([authedUser])
+                        ...state[qid][answer],
+                        votes: state[qid][answer].votes.concat([authedUser])
                     }
                 }
             }
