@@ -126,6 +126,7 @@ h5 {
 	background-size: cover;
 	border-radius: 50%;
 	flex-shrink: 0;
+	align-self: center;
 }
 
 .card-details {
@@ -140,3 +141,40 @@ h5 {
 	justify-content: center;
 }
 
+
+/* Poll Result */
+
+.your-vote {
+	background-color: rgba(46, 204, 113, 0.05);
+	border: 1px solid #27ae60;
+}
+
+.your-vote p:first-child {
+	color: #27ae60;
+}
+
+.badge {
+	font-size: 1rem;
+}
+
+.badge-secondary {
+	background-color: #f1c40f;
+}
+
+.badge-pill {
+    margin-right: 0.6em;
+	margin-top: 0.6em;
+}
+
+.text-right {
+	margin: 0;
+}
+
+.progress {
+	height: 2rem;
+	font-size: 1.25rem;
+}
+
+.progress-bar {
+	background-color: #2ecc71;
+}
