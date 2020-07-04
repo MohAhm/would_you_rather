@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleAddPoll } from '../actions/polls'
 import Input from './common/Input'
+import { Redirect } from 'react-router-dom'
 
 
 class NewPoll extends Component {
     state = {
         optionOneText: '',
         optionTwoText: '',
+        toHome: false,
     }
 
     handleChange = e => {
@@ -24,12 +26,16 @@ class NewPoll extends Component {
 
         this.setState({
             optionOneText: '',
-            optionTwoText: ''
+            optionTwoText: '',
+            toHome: true,
         })
     }
 
     render() {
-        const { optionOneText, optionTwoText } = this.state
+        const { optionOneText, optionTwoText, toHome } = this.state
+
+        if (toHome)
+            return <Redirect to='/home'/>
 
         return (
             <div className="card">

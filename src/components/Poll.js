@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { formatPoll } from '../utils/helpers'
+import { Link } from 'react-router-dom'
 
 
 class Poll extends Component {
@@ -13,7 +14,7 @@ class Poll extends Component {
 
         console.log(this.props)
 
-        const { name, avatar, optionOne} = poll
+        const { id, name, avatar, optionOne} = poll
         const { text } = optionOne
 
         return (
@@ -30,12 +31,10 @@ class Poll extends Component {
                     <div className="card-details">
                         <h5 className="card-title">Would you rather</h5>
                         <p className='card-text'>{`...${(text.substring(0, text.length / 2))}...`}</p>
-                        <a
-                            className='btn btn-outline-primary'
-                            href="#poll"
-                        >
+
+                        <Link to={`/questions/${id}`} className='btn btn-outline-primary'>
                             View Poll
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

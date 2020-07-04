@@ -1,9 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import Dashboard from './Dashboard'
 import NewPoll from './NewPoll'
-import PollPage from './PollPage';
+import PollPage from './PollPage'
+import Navigation from './Navigation'
 import LoadingBar from 'react-redux-loading-bar'
 
 
@@ -14,13 +16,25 @@ class App extends Component {
 
 	render() {
 		return (
-			<div className="container">
-				<LoadingBar style={{ backgroundColor: '#2ecc71' }} />
-				{this.props.loading === true
-					? null
-					: <PollPage match={{params: {id: '6ni6ok3ym7mf1p33lnez'}}} />
-				}
-			</div>
+			<Router>
+				<Fragment>
+					<LoadingBar style={{ backgroundColor: '#2ecc71' }} />
+
+					<Navigation />
+
+					<div className="container">
+						{this.props.loading === true
+							? null
+							: <div className='content mx-auto'>
+								<Route path='/home' component={Dashboard} />
+								<Route path='/questions/:id' component={PollPage} />
+								<Route path='/add' component={NewPoll} />
+								<Redirect from='/' exact to='/home' />
+							</div>
+						}
+					</div>
+				</Fragment>
+			</Router>
 		)
 	}
 }

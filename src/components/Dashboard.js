@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Poll from './Poll'
-import { Tabs, Tab } from 'react-bootstrap';
+import { Tabs, Tab } from 'react-bootstrap'
 
 
 class Dashboard extends Component {
