@@ -1,11 +1,12 @@
 import React, { Component, Fragment } from 'react'
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import Dashboard from './Dashboard'
 import NewPoll from './NewPoll'
 import PollPage from './PollPage'
 import Navigation from './Navigation'
+import NotFound from './NotFound'
 import LoadingBar from 'react-redux-loading-bar'
 
 
@@ -22,14 +23,18 @@ class App extends Component {
 
 					<Navigation />
 
-					<div className="container">
+					<div className="container mb-5">
 						{this.props.loading === true
 							? null
 							: <div className='content mx-auto'>
-								<Route path='/home' component={Dashboard} />
-								<Route path='/questions/:id' component={PollPage} />
-								<Route path='/add' component={NewPoll} />
-								<Redirect from='/' exact to='/home' />
+								<Switch>
+									<Route path='/home' component={Dashboard} />
+									<Route path='/questions/:id' component={PollPage} />
+									<Route path='/add' component={NewPoll} />
+									<Route path='/not-found' component={NotFound} />
+									<Redirect from='/' exact to='/home' />
+									<Redirect to='/not-found' />
+								</Switch>
 							</div>
 						}
 					</div>

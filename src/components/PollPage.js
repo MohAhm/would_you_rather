@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import AnsweredPoll from './AnsweredPoll'
 import UnansweredPoll from './UnansweredPoll'
 
@@ -8,15 +9,16 @@ class PollPage extends Component {
     render() {
         const { id, hasAnswered } = this.props
 
-        console.log(this.props)
+        if (hasAnswered === null)
+            return <Redirect to='/not-found'/>
 
         return (
-            <div>
+            <Fragment>
                 {hasAnswered === true
                     ? <AnsweredPoll id={id} />
                     : <UnansweredPoll id={id} />
                 }
-            </div>
+            </Fragment>
         )
     }
 }
@@ -28,8 +30,10 @@ function mapStateToProps({ authedUser, polls }, props) {
 
     return {
         id,
-        hasAnswered: poll.optionOne.votes.includes(authedUser) || poll.optionTwo.votes.includes(authedUser)
-    }
+        hasAnswered: poll
+            ? poll.optionOne.votes.includes(authedUser) || poll.optionTwo.votes.includes(authedUser)
+            : null
+        }
 }
 
 

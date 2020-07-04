@@ -35,7 +35,7 @@ class NewPoll extends Component {
         const { optionOneText, optionTwoText, toHome } = this.state
 
         if (toHome)
-            return <Redirect to='/home'/>
+            return <Redirect to='/'/>
 
         return (
             <div className="card">

@@ -8,9 +8,9 @@ class Poll extends Component {
     render() {
         const { poll } = this.props
 
-        if (poll === null) {
+        if (poll === null)
             return <p>This Poll doesn't existd</p>
-        }
+
 
         console.log(this.props)
 
