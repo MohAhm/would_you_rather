@@ -7,6 +7,7 @@ import NewPoll from './NewPoll'
 import PollPage from './PollPage'
 import Navigation from './Navigation'
 import NotFound from './NotFound'
+import Leaderboard from './Leaderboard'
 import LoadingBar from 'react-redux-loading-bar'
 
 
@@ -31,6 +32,7 @@ class App extends Component {
 									<Route path='/home' component={Dashboard} />
 									<Route path='/questions/:id' component={PollPage} />
 									<Route path='/add' component={NewPoll} />
+									<Route path='/leaderboard' component={Leaderboard} />
 									<Route path='/not-found' component={NotFound} />
 									<Redirect from='/' exact to='/home' />
 									<Redirect to='/not-found' />

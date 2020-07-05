@@ -16,18 +16,22 @@ class Dashboard extends Component {
                 onSelect={key => this.setState({ key })}
             >
                 <Tab eventKey='unanswered' title='Unanswered Questions'>
-                    {this.props.unansweredPollsIds.map(id => (
-                        <li key={id}>
-                            <Poll id={id} />
-                        </li>
-                    ))}
+                    <ul>
+                        {this.props.unansweredPollsIds.map(id => (
+                            <li key={id}>
+                                <Poll id={id} />
+                            </li>
+                        ))}
+                    </ul>
                 </Tab>
                 <Tab eventKey='answered' title='Answered Questions'>
-                    {this.props.answeredPollsIds.map(id => (
-                        <li key={id}>
-                            <Poll id={id} />
-                        </li>
-                    ))}
+                    <ul>
+                        {this.props.answeredPollsIds.map(id => (
+                            <li key={id}>
+                                <Poll id={id} />
+                            </li>
+                        ))}
+                    </ul>
                 </Tab>
             </Tabs>
         )
