@@ -117,7 +117,7 @@ h5 {
 }
 
 
-/* Polls */
+/* Questions */
 
 .flex {
 	display: flex;
@@ -154,7 +154,7 @@ h5 {
 }
 
 
-/* Poll Result */
+/* Question Result */
 
 .your-vote {
 	background-color: rgba(46, 204, 113, 0.05);
@@ -192,7 +192,7 @@ h5 {
 }
 
 
-/* Poll Result */
+/* Question Result */
 
 .bg-light {
 	background-color: #fff !important;

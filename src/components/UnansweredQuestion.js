@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { formatPoll } from '../utils/helpers'
-import { handleAnswerPoll } from '../actions/polls'
+import { formatQuestion } from '../utils/helpers'
+import { handleAnswerQuestion } from '../actions/shared'
 import Radio from './common/Radio'
 
 
-class UnansweredPoll extends Component {
+class UnansweredQuestion extends Component {
     state = {
         selectedOption: 'optionOne'
     }
@@ -21,14 +21,14 @@ class UnansweredPoll extends Component {
         const { selectedOption } = this.state
         const { dispatch, id } = this.props
 
-        dispatch(handleAnswerPoll(id, selectedOption))
+        dispatch(handleAnswerQuestion(id, selectedOption))
     }
 
     render() {
         const { selectedOption } = this.state
-        const { poll } = this.props
+        const { question } = this.props
 
-        const { name, avatar, optionOne, optionTwo } = poll
+        const { name, avatar, optionOne, optionTwo } = question
 
         return (
             <div className="card">
@@ -71,16 +71,16 @@ class UnansweredPoll extends Component {
 }
 
 
-function mapStateToProps ({ users, polls }, { id }) {
-    const poll = polls[id]
+function mapStateToProps ({ users, questions }, { id }) {
+    const question = questions[id]
 
     return {
         id,
-        poll: poll
-            ? formatPoll(poll, users[poll.author])
+        question: question
+            ? formatQuestion(question, users[question.author])
             : null
     }
 }
 
 
-export default connect(mapStateToProps)(UnansweredPoll);
+export default connect(mapStateToProps)(UnansweredQuestion);

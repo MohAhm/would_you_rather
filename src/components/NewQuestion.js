@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { handleAddPoll } from '../actions/polls'
+import { handleAddQuestion } from '../actions/shared'
 import Input from './common/Input'
 import { Redirect } from 'react-router-dom'
 
 
-class NewPoll extends Component {
+class NewQuestion extends Component {
     state = {
         optionOneText: '',
         optionTwoText: '',
@@ -22,7 +22,7 @@ class NewPoll extends Component {
         const { optionOneText, optionTwoText } = this.state
         const { dispatch } = this.props
 
-        dispatch(handleAddPoll(optionOneText, optionTwoText))
+        dispatch(handleAddQuestion(optionOneText, optionTwoText))
 
         this.setState({
             optionOneText: '',
@@ -76,4 +76,4 @@ class NewPoll extends Component {
     }
 }
 
-export default connect()(NewPoll)
+export default connect()(NewQuestion)

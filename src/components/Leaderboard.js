@@ -8,7 +8,7 @@ class Leaderboard extends Component {
         return (
             <Fragment>
                 <ul>
-                    {this.props.usersId.map(id => (
+                    {this.props.usersIds.map(id => (
                         <li key={id}>
                             <User id={id} />
                         </li>
@@ -27,7 +27,7 @@ function mapStateToProps ({ users }) {
     ))
 
     return {
-        usersId: sortUsers
+        usersIds: sortUsers
     }
 }
 

@@ -1,7 +1,7 @@
 
 
-export function formatPoll(poll, author) {
-    const { id, optionOne, optionTwo } = poll
+export function formatQuestion(question, author) {
+    const { id, optionOne, optionTwo } = question
     const { name, avatarURL: avatar } = author
 
     return {
@@ -10,5 +10,21 @@ export function formatPoll(poll, author) {
         avatar,
         optionOne,
         optionTwo,
+    }
+}
+
+
+export function formatUser(user) {
+    const { name, avatarURL: avatar, answers, questions } = user
+    const answeredQuestions = Object.keys(answers).length
+    const createdQuestions = questions.length
+    const score = answeredQuestions + createdQuestions
+
+    return {
+        name,
+        avatar,
+        answeredQuestions,
+        createdQuestions,
+        score,
     }
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Poll from './Poll'
+import Question from './Question'
 import { Tabs, Tab } from 'react-bootstrap'
 
 
@@ -17,18 +17,18 @@ class Dashboard extends Component {
             >
                 <Tab eventKey='unanswered' title='Unanswered Questions'>
                     <ul>
-                        {this.props.unansweredPollsIds.map(id => (
+                        {this.props.unansweredQuestionsIds.map(id => (
                             <li key={id}>
-                                <Poll id={id} />
+                                <Question id={id} />
                             </li>
                         ))}
                     </ul>
                 </Tab>
                 <Tab eventKey='answered' title='Answered Questions'>
                     <ul>
-                        {this.props.answeredPollsIds.map(id => (
+                        {this.props.answeredQuestionsIds.map(id => (
                             <li key={id}>
-                                <Poll id={id} />
+                                <Question id={id} />
                             </li>
                         ))}
                     </ul>
@@ -39,19 +39,19 @@ class Dashboard extends Component {
 }
 
 
-function mapStateToProps ({ authedUser, polls }) {
-    const answeredPolls = Object.values(polls).filter(poll =>
-            poll.optionOne.votes.includes(authedUser) || poll.optionTwo.votes.includes(authedUser)
+function mapStateToProps ({ authedUser, questions }) {
+    const answeredQuestions = Object.values(questions).filter(question =>
+            question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser)
         )
-    const unansweredPolls = Object.values(polls).filter(poll =>
-            !poll.optionOne.votes.includes(authedUser) && !poll.optionTwo.votes.includes(authedUser)
+    const unansweredQuestions = Object.values(questions).filter(question =>
+            !question.optionOne.votes.includes(authedUser) && !question.optionTwo.votes.includes(authedUser)
         )
 
     return {
-        answeredPollsIds: Object.values(answeredPolls)
-            .sort((a, b) => b.timestamp - a.timestamp).map(poll => poll.id),
-        unansweredPollsIds: Object.values(unansweredPolls)
-            .sort((a, b) => b.timestamp - a.timestamp).map(poll => poll.id)
+        answeredQuestionsIds: Object.values(answeredQuestions)
+            .sort((a, b) => b.timestamp - a.timestamp).map(question => question.id),
+        unansweredQuestionsIds: Object.values(unansweredQuestions)
+            .sort((a, b) => b.timestamp - a.timestamp).map(question => question.id)
     }
 }
 

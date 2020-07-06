@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { formatPoll } from '../utils/helpers';
+import { formatQuestion } from '../utils/helpers';
 
 
-class AnsweredPoll extends Component {
+class AnsweredQuestion extends Component {
     percentage = (totalValue, partialValue) => {
         return Math.floor((100 * partialValue) / totalValue)
     }
 
     render() {
-        const { authedUser, poll } = this.props
+        const { authedUser, question } = this.props
 
-        const { name, avatar, optionOne, optionTwo } = poll
+        const { name, avatar, optionOne, optionTwo } = question
 
         const totoalVotes = optionOne.votes.length + optionTwo.votes.length
         const optionOneVotes = optionOne.votes.length
@@ -90,16 +90,16 @@ class AnsweredPoll extends Component {
 }
 
 
-function mapStateToProps ({ authedUser, users, polls }, { id })  {
-    const poll = polls[id]
+function mapStateToProps ({ authedUser, users, questions }, { id })  {
+    const question = questions[id]
 
     return {
         authedUser,
-        poll: poll
-            ? formatPoll(poll, users[poll.author])
+        question: question
+            ? formatQuestion(question, users[question.author])
             : null
     }
 }
 
 
-export default connect(mapStateToProps)(AnsweredPoll);
+export default connect(mapStateToProps)(AnsweredQuestion);

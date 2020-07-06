@@ -1,14 +1,14 @@
-import { RECEIVE_POLLS, ANSWER_POLL, ADD_POLL } from '../actions/polls'
+import { RECEIVE_QUESTIONS, ANSWER_QUESTION, ADD_QUESTION } from '../actions/questions'
 
-export default function polls (state = {}, action) {
+export default function questions (state = {}, action) {
     switch (action.type) {
-        case RECEIVE_POLLS:
+        case RECEIVE_QUESTIONS:
             return {
                 ...state,
-                ...action.polls
+                ...action.questions
             }
 
-        case ANSWER_POLL:
+        case ANSWER_QUESTION:
             const { authedUser, qid, answer } = action
 
             return {
@@ -22,12 +22,12 @@ export default function polls (state = {}, action) {
                 }
             }
 
-        case ADD_POLL:
-            const { poll } = action
+        case ADD_QUESTION:
+            const { question } = action
 
             return {
                 ...state,
-                [poll.id]: poll
+                [question.id]: question
             }
 
         default:

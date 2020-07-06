@@ -1,20 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { formatPoll } from '../utils/helpers'
+import { formatQuestion } from '../utils/helpers'
 import { Link } from 'react-router-dom'
 
 
-class Poll extends Component {
+class Question extends Component {
     render() {
-        const { poll } = this.props
+        const { question } = this.props
 
-        if (poll === null)
-            return <p>This Poll doesn't existd</p>
+        if (question === null)
+            return <p>This question doesn't existd</p>
 
-
-        console.log(this.props)
-
-        const { id, name, avatar, optionOne} = poll
+        const { id, name, avatar, optionOne} = question
         const { text } = optionOne
 
         return (
@@ -33,7 +30,7 @@ class Poll extends Component {
                         <p className='card-text'>{`...${(text.substring(0, text.length / 2))}...`}</p>
 
                         <Link to={`/questions/${id}`} className='btn btn-outline-primary'>
-                            View Poll
+                            View Question
                         </Link>
                     </div>
                 </div>
@@ -43,15 +40,15 @@ class Poll extends Component {
 }
 
 
-function mapStateToProps ({ users, polls }, { id }) {
-    const poll = polls[id]
+function mapStateToProps ({ users, questions }, { id }) {
+    const question = questions[id]
 
     return {
-        poll: poll
-            ? formatPoll(poll, users[poll.author])
+        question: question
+            ? formatQuestion(question, users[question.author])
             : null
     }
 }
 
 
-export default connect(mapStateToProps)(Poll)
+export default connect(mapStateToProps)(Question)
