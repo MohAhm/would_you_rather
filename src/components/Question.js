@@ -18,20 +18,24 @@ class Question extends Component {
             <div className='card'>
                 <h5 className='card-header'>{name} asks:</h5>
 
-                <div className="card-body flex">
-                    <img
-                        src={avatar}
-                        alt={`Avatar of ${name}`}
-                        className='avatar'
-                    />
+                <div className="row card-body">
+                    <div className="col-md-4">
+                        <img
+                            src={avatar}
+                            alt={`Avatar of ${name}`}
+                            className='card-img'
+                        />
+                    </div>
 
-                    <div className="card-details">
-                        <h5 className="card-title">Would you rather</h5>
-                        <p className='card-text'>{`...${(text.substring(0, text.length / 2))}...`}</p>
+                    <div className="col-md-8 mt-4">
+                        <div className="card-details">
+                            <h5 className="card-title">Would you rather</h5>
+                            <p className="card-text">{`...${(text.substring(0, text.length / 2))}...`}</p>
 
-                        <Link to={`/questions/${id}`} className='btn btn-outline-primary'>
-                            View Question
-                        </Link>
+                            <Link to={`/questions/${id}`} className="btn btn-block btn-outline-primary mt-auto">
+                                View Poll
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </div>

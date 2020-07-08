@@ -13,18 +13,26 @@ class User extends Component {
         const { name, avatar, answeredQuestions, createdQuestions, score } = user
 
         return (
-            <div className="card mb-3">
-                <div className="row no-gutters">
-                    <div className="col-md-4">
+            <div className="card">
+                <div className="row card-body font-weight-bold">
+                    <div className="col-md-3 d-flex align-items-center">
                         <img src={avatar} alt={`Avatar of ${name}`} className="card-img"/>
                     </div>
 
-                    <div className="col-md-8">
-                        <div className="card-body">
+                    <div className="col-md-6 my-4">
+                        <div className="card-details">
                             <h3 className="card-title">{name}</h3>
-                            <p className="card-text">Answered questions {answeredQuestions}</p>
+                            <p className="card-text my-auto">Answered questions {answeredQuestions}</p>
                             <p className="card-text">Created questions {createdQuestions}</p>
-                            <p className="card-text">Score: {score}</p>
+                        </div>
+                    </div>
+
+                    <div className="col-md-3">
+                        <div className="card text-center">
+                            <div className="card-header">Score</div>
+                            <div className="card-body">
+                                <h5 className="circle">{score}</h5>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -34,35 +34,39 @@ class UnansweredQuestion extends Component {
             <div className="card">
                 <h5 className="card-header">{name} asks:</h5>
 
-                <div className="card-body flex">
-                    <img
-                        src={avatar}
-                        alt={`Avatar of ${name}`}
-                        className='avatar'
-                    />
+                <div className="row card-body">
+                    <div className="col-md-4">
+                        <img
+                            src={avatar}
+                            alt={`Avatar of ${name}`}
+                            className='card-img'
+                        />
+                    </div>
 
-                    <div className="card-details">
-                        <h3 className="card-title">Would you rather...</h3>
+                    <div className="col-md-8 mt-4">
+                        <div className="card-details">
+                            <h3 className="card-title">Would you rather...</h3>
 
-                        <form onSubmit={this.handleSubmit}>
-                            <Radio
-                                name='optionOne'
-                                label={optionOne.text}
-                                option={selectedOption}
-                                onChange={this.handleChange}
-                            />
+                            <form onSubmit={this.handleSubmit}>
+                                <Radio
+                                    name='optionOne'
+                                    label={optionOne.text}
+                                    option={selectedOption}
+                                    onChange={this.handleChange}
+                                />
 
-                            <Radio
-                                name='optionTwo'
-                                label={optionTwo.text}
-                                option={selectedOption}
-                                onChange={this.handleChange}
-                            />
+                                <Radio
+                                    name='optionTwo'
+                                    label={optionTwo.text}
+                                    option={selectedOption}
+                                    onChange={this.handleChange}
+                                />
 
-                            <button type='submit' className='btn btn-primary btn-block'>
-                                Submit
-                            </button>
-                        </form>
+                                <button type='submit' className='btn btn-primary btn-block mt-auto'>
+                                    Submit
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
