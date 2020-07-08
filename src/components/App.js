@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
+import SignInForm from './SignInForm'
 import Dashboard from './Dashboard'
 import NewQuestion from './NewQuestion'
 import QuestionPage from './QuestionPage'
@@ -29,6 +30,7 @@ class App extends Component {
 							? null
 							: <div className='content mx-auto'>
 								<Switch>
+									<Route path='/signin' component={SignInForm} />
 									<Route path='/home' component={Dashboard} />
 									<Route path='/questions/:id' component={QuestionPage} />
 									<Route path='/add' component={NewQuestion} />

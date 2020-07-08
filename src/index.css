@@ -138,13 +138,6 @@ h5 {
 	flex-direction: column;
 }
 
-.rounded-circle {
-	color: #fff;
-	background: #2ecc71;
-	width: 50%;
-	height: 50%;
-}
-
 .circle {
 	display: inline-block;
 	margin: 0;
@@ -222,7 +215,7 @@ h5 {
 }
 
 .navbar-light .navbar-nav .nav-link,
-.logout {
+.sign-in {
 	color: #252525;
 	position: relative;
 	transition: all .3s cubic-bezier(.2, 0, 0, 1);
@@ -230,7 +223,7 @@ h5 {
 }
 
 .navbar-light .navbar-nav .nav-link::after,
-.logout::after {
+.sign-in::after {
 	content: '';
     display: block;
     height: 0.5px;
@@ -245,14 +238,18 @@ h5 {
 
 .navbar-light .navbar-nav .nav-link:hover,
 .navbar-light .navbar-nav .nav-link.active,
-.logout:hover {
+.sign-in:hover {
 	color: #fff;
 }
 
 .navbar-light .navbar-nav .nav-link:hover::after,
 .navbar-light .navbar-nav .nav-link.active::after,
-.logout:hover::after {
+.sign-in:hover::after {
 	right: 0;
 	left: 0;
 	height: 100%;
+}
+
+.sign-in-text {
+	color: #27ae60;
 }
