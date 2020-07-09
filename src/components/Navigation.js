@@ -33,7 +33,7 @@ class Navigation extends Component {
                                 className='min-avatar'
                             />
 
-                            <LinkContainer to='/signin' className="sign-in">
+                            <LinkContainer to='/signout' className="sign-out">
                                 <Nav.Link>Logout</Nav.Link>
                             </LinkContainer>
                         </Fragment>

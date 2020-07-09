@@ -1,11 +1,8 @@
 import { getInitialData, saveQuestion, saveQuestionAnswer } from '../utils/api'
 import { receiveQuestions, addQuestion, answerQuestion } from './questions'
 import { receiveUsers, addQuestionUser, answerQuestionUser } from './users'
-import { setAuthedUser } from './authedUser'
 import { showLoading, hideLoading } from 'react-redux-loading-bar'
 
-
-const AUTHED_ID = 'tylermcginnis'
 
 // asynchronous action creator
 export function handleInitialData () {
@@ -15,7 +12,6 @@ export function handleInitialData () {
             .then(({ users, questions }) => {
                 dispatch(receiveUsers(users))
                 dispatch(receiveQuestions(questions))
-                dispatch(setAuthedUser(AUTHED_ID))
                 dispatch(hideLoading())
             })
     }

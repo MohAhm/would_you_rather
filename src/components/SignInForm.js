@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
+import { setAuthedUser } from '../actions/authedUser'
 import Select from 'react-select'
 
 
 class SignInForm extends Component {
     state = {
         selectedOption: null,
+        toHome: false,
     }
 
     handleChange = selectedOption => {
@@ -15,12 +18,23 @@ class SignInForm extends Component {
     handleSubmit = e => {
         e.preventDefault()
 
-        console.log('Option selected: ', this.state.selectedOption)
+        const { selectedOption } = this.state
+        const { dispatch } = this.props
+        const { value: authedId } = selectedOption
+
+        dispatch(setAuthedUser(authedId))
+
+        this.setState({ toHome: true })
     }
 
     render() {
-        const { selectedOption } = this.state
-        const { options } = this.props
+        const { selectedOption, toHome } = this.state
+        const { options, location } = this.props
+
+        if (toHome)
+            return <Redirect to={
+                location.state ? location.state.from.pathname : '/'
+            }/>
 
         return (
             <div className="card text-center">

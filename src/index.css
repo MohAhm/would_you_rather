@@ -215,7 +215,7 @@ h5 {
 }
 
 .navbar-light .navbar-nav .nav-link,
-.sign-in {
+.sign-out {
 	color: #252525;
 	position: relative;
 	transition: all .3s cubic-bezier(.2, 0, 0, 1);
@@ -223,7 +223,7 @@ h5 {
 }
 
 .navbar-light .navbar-nav .nav-link::after,
-.sign-in::after {
+.sign-out::after {
 	content: '';
     display: block;
     height: 0.5px;
@@ -238,13 +238,13 @@ h5 {
 
 .navbar-light .navbar-nav .nav-link:hover,
 .navbar-light .navbar-nav .nav-link.active,
-.sign-in:hover {
+.sign-out:hover {
 	color: #fff;
 }
 
 .navbar-light .navbar-nav .nav-link:hover::after,
 .navbar-light .navbar-nav .nav-link.active::after,
-.sign-in:hover::after {
+.sign-out:hover::after {
 	right: 0;
 	left: 0;
 	height: 100%;

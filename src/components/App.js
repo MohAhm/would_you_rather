@@ -2,7 +2,9 @@ import React, { Component, Fragment } from 'react'
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
+import ProtectedRoute from './common/ProtectedRoute'
 import SignInForm from './SignInForm'
+import SignOut from './SignOut'
 import Dashboard from './Dashboard'
 import NewQuestion from './NewQuestion'
 import QuestionPage from './QuestionPage'
@@ -26,21 +28,19 @@ class App extends Component {
 					<Navigation />
 
 					<div className="container mb-5">
-						{this.props.loading === true
-							? null
-							: <div className='content mx-auto'>
-								<Switch>
-									<Route path='/signin' component={SignInForm} />
-									<Route path='/home' component={Dashboard} />
-									<Route path='/questions/:id' component={QuestionPage} />
-									<Route path='/add' component={NewQuestion} />
-									<Route path='/leaderboard' component={Leaderboard} />
-									<Route path='/not-found' component={NotFound} />
-									<Redirect from='/' exact to='/home' />
-									<Redirect to='/not-found' />
-								</Switch>
-							</div>
-						}
+						<div className='content mx-auto'>
+							<Switch>
+								<Route path='/signin' component={SignInForm} />
+								<Route path='/signout' component={SignOut} />
+								<ProtectedRoute path='/home' component={Dashboard} />
+								<ProtectedRoute path='/questions/:id' component={QuestionPage} />
+								<ProtectedRoute path='/add' component={NewQuestion} />
+								<ProtectedRoute path='/leaderboard' component={Leaderboard} />
+								<Route path='/not-found' component={NotFound} />
+								<Redirect from='/' exact to='/home' />
+								<Redirect to='/not-found' />
+							</Switch>
+						</div>
 					</div>
 				</Fragment>
 			</Router>
@@ -49,9 +49,4 @@ class App extends Component {
 }
 
 
-const mapStateToProps = ({ authedUser }) => ({
-	loading: authedUser === null
-})
-
-
-export default connect(mapStateToProps)(App)
+export default connect()(App)
