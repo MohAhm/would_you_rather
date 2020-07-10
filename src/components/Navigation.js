@@ -9,35 +9,39 @@ class Navigation extends Component {
         const { user } = this.props
 
         return (
-            <Navbar bg="light" variant="light" className="mb-3">
+            <Navbar collapseOnSelect expand="md" bg="dark" variant="dark" className="mb-3">
                 <div className="container">
-                    <Nav activeKey='/' className="mr-auto">
-                        <LinkContainer to='/home' exact>
-                            <Nav.Link>Home</Nav.Link>
-                        </LinkContainer>
-                        <LinkContainer to='/add'>
-                            <Nav.Link>New Question</Nav.Link>
-                        </LinkContainer>
-                        <LinkContainer to='/leaderboard'>
-                            <Nav.Link>Leader Board</Nav.Link>
-                        </LinkContainer>
-                    </Nav>
-
-                    {user && (
-                        <Fragment>
-                            <Navbar.Text>Hello, {user.name}</Navbar.Text>
-
-                            <img
-                                src={user.avatarURL}
-                                alt={`Avatar of ${user.name}`}
-                                className='min-avatar'
-                            />
-
-                            <LinkContainer to='/signout' className="sign-out">
-                                <Nav.Link>Logout</Nav.Link>
+                    <Navbar.Brand />
+                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                    <Navbar.Collapse id="responsive-navbar-nav">
+                        <Nav activeKey='/' className="mr-auto">
+                            <LinkContainer to='/home' exact>
+                                <Nav.Link>Home</Nav.Link>
                             </LinkContainer>
-                        </Fragment>
-                    )}
+                            <LinkContainer to='/add'>
+                                <Nav.Link>New Question</Nav.Link>
+                            </LinkContainer>
+                            <LinkContainer to='/leaderboard'>
+                                <Nav.Link>Leader Board</Nav.Link>
+                            </LinkContainer>
+                        </Nav>
+
+                        {user && (
+                            <Fragment>
+                                <Navbar.Text>Hello, {user.name}</Navbar.Text>
+
+                                <img
+                                    src={user.avatarURL}
+                                    alt={`Avatar of ${user.name}`}
+                                    className='min-avatar'
+                                />
+
+                                <LinkContainer to='/signout' className="sign-out">
+                                    <Nav.Link>Logout</Nav.Link>
+                                </LinkContainer>
+                            </Fragment>
+                        )}
+                    </Navbar.Collapse>
                 </div>
             </Navbar>
         )
