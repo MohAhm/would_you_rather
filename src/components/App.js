@@ -23,7 +23,7 @@ class App extends Component {
 		return (
 			<Router>
 				<Fragment>
-					<LoadingBar style={{ backgroundColor: '#2ecc71' }} />
+					<LoadingBar style={{ backgroundColor: '#2ecc71', zIndex: 1 }} />
 
 					<Navigation />
 
